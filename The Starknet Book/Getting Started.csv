@@ -1,5 +1,6 @@
 question,answer
-"How to use the Starknet Remix Plugin to compile, deploy and interact with smart contract?","1.Visit the Remix IDE website.
+"How to use the Starknet Remix Plugin to compile, deploy and interact with smart contract?",
+"1.Visit the Remix IDE website.
 2.Navigate to the 'Plugin Manager' section in the bottom left corner.
 3.Activate the 'Starknet' plugin.
 4.Accept the permissions. Click 'Remember my choice' to avoid this step in the future.
