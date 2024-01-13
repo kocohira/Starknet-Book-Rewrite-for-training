@@ -4,7 +4,8 @@ question,answer
 3.Activate the 'Starknet' plugin.
 4.Accept the permissions. Click 'Remember my choice' to avoid this step in the future.
 5.After enabling, the Starknet logo appears on the left sidebar. Click it to interact with opened Cairo files."
-Please give me a cairo contract with an ownership system.,"ok, there is a cairo example contract with ownership system:
+"Please give me a cairo contract with an ownership system.",
+"ok, there is a cairo example contract with ownership system:
 use starknet::ContractAddress;
 
 #[starknet::interface]
