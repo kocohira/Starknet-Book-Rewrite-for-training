@@ -1,5 +1,5 @@
 question,answer
-What is Account Abstraction?,"Account Abstraction (AA) represents an approach to managing accounts and transactions in blockchain networks. It involves two key concepts:
+"What is Account Abstraction?","Account Abstraction (AA) represents an approach to managing accounts and transactions in blockchain networks. It involves two key concepts:
 
 1.Transaction Flexibility:
 
@@ -17,7 +17,7 @@ Key Definitions of AA:
 
 Definition 1: As described by Martin Triay at Devcon 6, AA allows smart contracts to pay for their transactions. This shifts away from traditional Externally Owned Accounts or Smart Wallets.
 Definition 2: Lightclient at Devcon 6 defines AA as validation abstraction. Unlike Ethereum's Layer 1 single validation method, AA permits various signature types, cryptographic methods, and execution processes."
-In what ways can Account Abstraction be used for?,"Account Abstraction (AA) enhances the accessibility and security of self-custody in blockchain technology. Here are a few of the features that AA enables:
+"In what ways can Account Abstraction be used for?","Account Abstraction (AA) enhances the accessibility and security of self-custody in blockchain technology. Here are a few of the features that AA enables:
 
 1.Hardware Signer:
 
@@ -53,7 +53,7 @@ AA accommodates additional security measures like two-factor authentication for 
 3.Custom Security Policies:
 
 Security can be customized for different user types or devices, incorporating best practices from banking and web2 sectors."
-What pros and cons does Ethereum Account System have?,"Understanding Ethereum's current account system is important to appreciating the benefits of Account Abstraction (AA). Ethereum's account system comprises two types:
+"What pros and cons does Ethereum Account System have?","Understanding Ethereum's current account system is important to appreciating the benefits of Account Abstraction (AA). Ethereum's account system comprises two types:
 
 1.Externally Owned Accounts (EOAs):
 
@@ -85,7 +85,7 @@ Challenges in the current account model include:
 3.1.The traditional model restricts custom transaction validation schemes, limiting potential security and access control enhancements.
 
 AA aims to address these issues, presenting opportunities for improved security, scalability, and user experience."
-Why isn't Account Abstraction Implemented in Ethereum's Layer 1 Yet?,"Ethereum's Layer 1 (L1) currently lacks support for Account Abstraction (AA) at the protocol level, not due to a lack of interest or recognition of its value, but rather because of the complexity involved in its integration.
+"Why isn't Account Abstraction Implemented in Ethereum's Layer 1 Yet?","Ethereum's Layer 1 (L1) currently lacks support for Account Abstraction (AA) at the protocol level, not due to a lack of interest or recognition of its value, but rather because of the complexity involved in its integration.
 
 Key challenges to implementing AA in Ethereum's L1 include:
 
