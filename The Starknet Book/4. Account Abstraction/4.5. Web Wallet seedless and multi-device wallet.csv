@@ -1,12 +1,12 @@
 question,answer
-What is Web Wallet?,"Web Wallet, developed by Argent, is a tool that uses the full power and capacity of Account Abstraction. It's a self-custodial, browser-based wallet that simplifies blockchain interactions. Unlike traditional wallets that often involve seed phrases and wallet downloads, Web Wallet utilizes a simple email and password setup. This approach blends the ease of web2 interfaces with the advanced capabilities of web3, making Starknet more accessible and user-friendly.
+"What is Web Wallet?","Web Wallet, developed by Argent, is a tool that uses the full power and capacity of Account Abstraction. It's a self-custodial, browser-based wallet that simplifies blockchain interactions. Unlike traditional wallets that often involve seed phrases and wallet downloads, Web Wallet utilizes a simple email and password setup. This approach blends the ease of web2 interfaces with the advanced capabilities of web3, making Starknet more accessible and user-friendly.
 
 Key Features:
 
 1.Simplified Seed Phrases: Web Wallet eliminates the need for seed phrases. Access your wallet easily using your email and password. Accounts are easily recoverable if lost.
 2.No Downloads Needed: Access Starknet directly from your browser using your email. No need to download an application or extension to create a wallet.
 3.Multi-Device Support: Web Wallet can be used across various devices seamlessly, like any standard web2 application."
-How to intergrate dApps to starknet?,"To integrate Web Wallet in a dApp, start by installing 'starknetkit':
+"How to intergrate dApps to starknet?","To integrate Web Wallet in a dApp, start by installing 'starknetkit':
 
 yarn add starknetkit
 
@@ -31,7 +31,7 @@ const connectWallet = async () => {
 };
 ///
 NOTE: Web Wallet is currently available only on the mainnet. For testnet access, contact the Argent team."
-How to process transaction signing?,"Signing transactions with Web Wallet follows a process akin to the Argent X browser extension:
+"How to process transaction signing?","Signing transactions with Web Wallet follows a process akin to the Argent X browser extension:
 ///
 const tx = await connection.account.execute({
   //let's assume this is an erc20 contract
