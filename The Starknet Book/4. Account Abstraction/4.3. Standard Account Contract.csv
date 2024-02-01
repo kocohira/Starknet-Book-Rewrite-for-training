@@ -1,5 +1,5 @@
 question,answer
-Can you give me a sample of how to create a standard account contract?,"OK. I will guide you through the creation of a standard account contract, adhering to the SNIP-6 and SRC-5 standards. This time, we'll implement a more robust account contract that includes these features and adheres to the standards of an account contract.
+"Can you give me a sample of how to create a standard account contract?","OK. I will guide you through the creation of a standard account contract, adhering to the SNIP-6 and SRC-5 standards. This time, we'll implement a more robust account contract that includes these features and adheres to the standards of an account contract.
 
 1. Setting Up Your Project
 
@@ -7,7 +7,7 @@ For deploying an account contract to Starknet's testnet or mainnet, use Scarb ve
 
 To check your current Scarb version, run:
 
-scarb ¨Cversion
+scarb -version
 
 To install or update Scarb, refer to the Basic Installation instructions, covering macOS and Linux environments:
 
@@ -23,10 +23,10 @@ Check the generated project structure:
 
 $ tree .
 .
-©¸©¤©¤ aa
-    ©À©¤©¤ Scarb.toml
-    ©¸©¤©¤ src
-        ©¸©¤©¤ lib.cairo
+|---aa
+  |---Scarb.toml
+  |---src
+    |---lib.cairo
 
 By default, Scarb sets up for vanilla Cairo. Add Starknet capacities by editing 'Scarb.toml' to include the 'starknet' dependency:
 ///
@@ -146,7 +146,7 @@ mod Account {
 
 4. Enhanced Security Through Protocol-Exclusive Functions
 
-Starknet enhances the security of accounts by restricting the callability of certain functions. The '__execute__' and '__validate__' functions, though publicly visible, are callable solely by the Starknet protocol. This protocol asserts its unique calling rights by using a designated zero address¡ªa special value that signifies protocol-level operations.
+Starknet enhances the security of accounts by restricting the callability of certain functions. The '__execute__' and '__validate__' functions, though publicly visible, are callable solely by the Starknet protocol. This protocol asserts its unique calling rights by using a designated zero addressã€ža special value that signifies protocol-level operations.
 ///
 #[starknet::contract]
 mod Account {
@@ -634,7 +634,7 @@ mod Account {
 }
 ///
 "
-Can you give me a sample standard account contract?,"Here is a fully functional account contract with final implementation;
+"Can you give me a sample standard account contract?","Here is a fully functional account contract with final implementation;
 ///
 use starknet::account::Call;
 
@@ -779,7 +779,7 @@ mod Account {
   }
 }
 ///"
-How to deploy account contract?,"Here is the way to deploy account contract:
+"How to deploy account contract?","Here is the way to deploy account contract:
 
 1. Account Contract Configuration Files
 
@@ -799,14 +799,14 @@ Here's a suggested structure:
 tree ~/.starkli-wallets
 
 .starkli-wallets
-©À©¤©¤ wallet-a
-©¦   ©À©¤©¤ account.json
-©¦   ©À©¤©¤ envars.sh
-©¦   ©¸©¤©¤ keystore.json
-©¸©¤©¤ wallet-b
-    ©À©¤©¤ account.json
-    ©À©¤©¤ envars.sh
-    ©¸©¤©¤ keystore.json
+|---wallet-a
+| |---account.json
+| |---envars.sh
+| |---keystore.json
+|---wallet-b
+  |---account.json
+  |---envars.sh
+  |---keystore.json
 
 This setup promotes better organization.
 
@@ -948,14 +948,14 @@ After setting up, your Starkli wallet structure will be:
 tree .
 
 .
-©À©¤©¤ custom
-©¦   ©À©¤©¤ account.json
-©¦   ©À©¤©¤ envars.sh
-©¦   ©¸©¤©¤ keystore.json
-©¸©¤©¤ deployer
-    ©À©¤©¤ account.json
-    ©À©¤©¤ envars.sh
-    ©¸©¤©¤ keystore.json
+|---custom
+| |---account.json
+| |---envars.sh
+| |---keystore.json
+|---deployer
+  |---account.json
+  |---envars.sh
+  |---keystore.json
 
 Source the deployer's environment file in the 'aa''directory to use it:
 
@@ -981,7 +981,7 @@ Once funded, press 'ENTER' to deploy:
 Deployment transaction confirmed
 
 Your account contract is now live on the Starknet testnet."
-How to interact with account contract?,"To test our account contract, we can send 100 gwei to the wallet '0x070a...52d1' by calling the 'transfer' function of the WETH smart contract on Starknet's testnet.
+"How to interact with account contract?","To test our account contract, we can send 100 gwei to the wallet '0x070a...52d1' by calling the 'transfer' function of the WETH smart contract on Starknet's testnet.
 
 Invoke the transfer with Starkli:
 
@@ -1030,7 +1030,7 @@ starkli invoke eth transfer 0x070a012... u256:100
 
 # [bonus] Recommended directory structure
 .
-©À©¤©¤ account.json
-©À©¤©¤ envars.sh
-©¸©¤©¤ keystore.json
+|---account.json
+|---envars.sh
+|---keystore.json
 ///"
