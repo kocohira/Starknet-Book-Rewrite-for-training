@@ -1,16 +1,16 @@
 question,answer
-What are Account Contract features?,"The account contract will be the simplest implementation of an account contract, with the following features:
+"What are Account Contract features?","The account contract will be the simplest implementation of an account contract, with the following features:
 
 1.Signature validation for transactions will be not enforced. In other words, every transaction will be considered valid no matter who signed it; there will be no pivate key.
 2.It will make a single call and not multicall in the execution phase.
 3.It will only implement the SNIP-6 standard which is the minimum to be considered an account contract.
 
 We will deployed using 'starknet.py' and use it to deploy other contracts."
-How to set up a project with account contract?,"For deploying an account contract to Starknet's testnet or mainnet, use Scarb version 2.3.1, which is compatible with the Sierra 1.3.0 target supported by both networks. For the latest information, review the Starknet Release Notes. As of November 2023, Scarb version 2.3.1 is the recommended choice.
+"How to set up a project with account contract?","For deploying an account contract to Starknet's testnet or mainnet, use Scarb version 2.3.1, which is compatible with the Sierra 1.3.0 target supported by both networks. For the latest information, review the Starknet Release Notes. As of November 2023, Scarb version 2.3.1 is the recommended choice.
 
 To check your current Scarb version, run:
 
-scarb ¨Cversion
+scarb -version
 
 To install or update Scarb, refer to the Basic Installation instructions in Chapter 2, covering macOS and Linux environments:
 
@@ -23,10 +23,10 @@ Check the generated project structure:
 
 $ tree .
 .
-©¸©¤©¤ hello_account
-    ©À©¤©¤ Scarb.toml
-    ©¸©¤©¤ src
-        ©¸©¤©¤ lib.cairo
+|---hello_account
+  |---Scarb.toml
+  |---src
+    |---lib.cairo
 
 By default, Scarb sets up for vanilla Cairo. Add Starknet capacities by editing 'Scarb.toml' to include the 'starknet' dependency:
 ///
