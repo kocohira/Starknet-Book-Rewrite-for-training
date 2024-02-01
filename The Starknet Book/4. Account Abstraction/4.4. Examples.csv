@@ -1,12 +1,12 @@
 question,answer
-Why need multicalls?,"Multicalls come handy in several scenarios. Here are some examples:
+"Why need multicalls?","Multicalls come handy in several scenarios. Here are some examples:
 
 1.Token Swapping on Decentralized Exchanges: In a typical token swap operation on a decentralized exchange (DEX), you first need to approve the spending of the tokens and then initiate the swap. Executing these operations separately could be cumbersome from a user experience perspective. With multicall, these calls can be combined into a single transaction, simplifying the user's task.
 
 2.Fetching Blockchain Data: When you want to query the prices of two different tokens from the blockchain, it's beneficial to have them both come from the same block for consistency. Multicall returns the latest block number along with the aggregated results, providing this consistency.
 
 The benefits of multicall transactions can be realized more in the context of account abstraction."
-How to create multicall account abstraction?,"Multicall is a feature of Account Abstraction that lets you bundle multiple user operations into a single transaction for a smoother UX.
+"How to create multicall account abstraction?","Multicall is a feature of Account Abstraction that lets you bundle multiple user operations into a single transaction for a smoother UX.
 
 The Call data type is a struct that has all the data you need to execute a single user operation.
 
@@ -32,9 +32,9 @@ The command creates a folder with the same name that includes a configuration fi
 aa $ tree .
 >>>
 .
-©¿©§©§ Scarb.toml
-©∏©§©§ src
-    ©∏©§©§ lib.cairo
+‚îú‚îÄ‚îÄ Scarb.toml
+‚îî‚îÄ‚îÄ src
+    ‚îî‚îÄ‚îÄ lib.cairo
 
 Scarb configures the project for vanilla Cairo instead of Starknet smart contracts by default.
 ///
@@ -183,7 +183,7 @@ mod Account {
   }
 }
 ///"
-What about protecting protocol-only functions?,"Although there might be legitimate use cases for other smart contracts to directly interact with the functions execute and validate of an account contract, these will rather be restricted to be callable only by the Starknet protocol in case there's an attack vector that has not been foresee.
+"What about protecting protocol-only functions?","Although there might be legitimate use cases for other smart contracts to directly interact with the functions execute and validate of an account contract, these will rather be restricted to be callable only by the Starknet protocol in case there's an attack vector that has not been foresee.
 
 To create private functions, this simply create a new implementation that is not annotated with the external attribute so no public selectors are created.
 ///
@@ -202,7 +202,7 @@ mod Account {
  }
 }
 ///"
-How to declare transaction and deploy transaction?,"validate_declare is used to validate the signature of a declare transaction while validate_deploy is used for the same purpose but for the deploy_account transaction. The latter is often referred to as °∞counterfactual deployment°±.
+"How to declare transaction and deploy transaction?","validate_declare is used to validate the signature of a declare transaction while validate_deploy is used for the same purpose but for the deploy_account transaction. The latter is often referred to as ‚Äúcounterfactual deployment‚Äù.
 ///
 #[starknet::contract]
 mod Account {
@@ -244,7 +244,7 @@ mod Account {
   }
 }
 ///"
-What about execute transactions?,"Looking at the signature of the execute function it is noticed that an array of calls are being passed instead of a single element.
+"What about execute transactions?","Looking at the signature of the execute function it is noticed that an array of calls are being passed instead of a single element.
 ///
 #[starknet::contract]
 mod Account {
@@ -332,7 +332,7 @@ mod Account {
   ...
 }
 ///"
-What versions that trasaction supported?,"As Starknet evolved, changes have been required to the structure of the transactions to accommodate more advanced functionality. To avoid creating breaking changes whenever a transaction structure needs to be updated, a °∞version°± field was added to all transactions so older and newer transactions can co-exist.
+"What versions that trasaction supported?","As Starknet evolved, changes have been required to the structure of the transactions to accommodate more advanced functionality. To avoid creating breaking changes whenever a transaction structure needs to be updated, a ‚Äúversion‚Äù field was added to all transactions so older and newer transactions can co-exist.
 
 Maintaining different transaction versions is complex and because this is just a tutorial, I'll restrict my account contract to only support the newest version of each type of transaction and those are:
 
@@ -407,7 +407,7 @@ mod Account {
   }
 }
 ///"
-What about simulated transactions?,"It's possible to request the Sequencer to estimate the amount of gas required to execute a transaction without actually executing it. Starkli for example provides the flag estimate-only that you can append to any transaction to instruct the Sequencer to only simulate the transaction and return the estimated cost.
+"What about simulated transactions?","It's possible to request the Sequencer to estimate the amount of gas required to execute a transaction without actually executing it. Starkli for example provides the flag estimate-only that you can append to any transaction to instruct the Sequencer to only simulate the transaction and return the estimated cost.
 
 To differentiate a regular transaction from a transaction simulation while protecting against replay attacks, the version of a transaction simulation is the same value as the normal transaction but offset by the value 2^128. For example, the version of a simulated declare transaction is 2^128 + 2 because the latest version of a regular declare transaction is 2.
 
@@ -437,7 +437,7 @@ mod Account {
   }
 }
 ///"
-What about introspection?,"Previously mentioned the standard SRC-5 is for introspection.
+"What about introspection?","Previously mentioned the standard SRC-5 is for introspection.
 ///
 trait ISRC5 {
   fn supports_interface(interface_id: felt252) -> bool;
@@ -472,7 +472,7 @@ mod Account {
   ...
 }
 ///"
-How to expose the public key?,"Although not required, it is a good idea to expose the public key associated with the account contract's signer. One use case is to easily and safely debug the correct deployment of the account contract by reading the stored public key and comparing it (offline) to the public key of my signer.
+"How to expose the public key?","Although not required, it is a good idea to expose the public key associated with the account contract's signer. One use case is to easily and safely debug the correct deployment of the account contract by reading the stored public key and comparing it (offline) to the public key of my signer.
 ///
 ...
 
@@ -489,12 +489,12 @@ mod Account {
   }
 }
 ///"
-What is Multisignature Account?,"Multisig, refers to a system where multiple signatures are required to authorize a transaction. This is commonly used in the context of cryptocurrency wallets, where funds can only be spent if a certain number of private keys agree to the transaction.
+"What is Multisignature Account?","Multisig, refers to a system where multiple signatures are required to authorize a transaction. This is commonly used in the context of cryptocurrency wallets, where funds can only be spent if a certain number of private keys agree to the transaction.
 
 Multisignature (multisig) technology is an integral part of the modern blockchain landscape. It enhances security by requiring multiple signatures to confirm a transaction, hence reducing the risk of fraudulent transactions and increasing control over asset management.
 
 In Starknet, the concept of multisig accounts is abstracted at the protocol level, allowing developers to implement custom account contracts that embody this concept. In this chapter, we'll delve into the workings of a multisig account and see how it's created in Starknet using an account contract."
-Why need multisig?,"There are several reasons why someone might choose to use a multisig wallet:
+"Why need multisig?","There are several reasons why someone might choose to use a multisig wallet:
 
 1. Enhanced security:
 
@@ -515,7 +515,7 @@ The benefits of Multisig contract account can be realized more in the context of
 Account abstraction enables built-in multisig functionality within accounts. Each account can be programmed to demand multiple signatures before transaction execution. This eliminates the need for separate multisig smart contracts, simplifying their use.
 
 A multisig account must have different traits that a smart contract must implement to be considered an account contract. In this book we will create an account contract from scratch following the SNIP-6 and SRC-5 standards."
-How to set up with multisig contract?,"In order to be able to compile an account contract to Sierra, a prerequisite to deploy it to testnet or mainnet, you'll need to make sure to have a version of Scarb that includes a Cairo compiler that targets Sierra 1.3 as it's the latest version supported by Starknet's testnet. At this point in time is Scarb 2.4.4 is used.
+"How to set up with multisig contract?","In order to be able to compile an account contract to Sierra, a prerequisite to deploy it to testnet or mainnet, you'll need to make sure to have a version of Scarb that includes a Cairo compiler that targets Sierra 1.3 as it's the latest version supported by Starknet's testnet. At this point in time is Scarb 2.4.4 is used.
 
 mac@Macs-MacBook-Pro-2 Desktop % scarb --version
 scarb 2.4.4 (0c8def3aa 2023-10-31)
@@ -532,9 +532,9 @@ The command creates a folder with the same name that includes a configuration fi
 aa $ tree .
 >>>
 .
-©¿©§©§ Scarb.toml
-©∏©§©§ src
-    ©∏©§©§ lib.cairo
+‚îú‚îÄ‚îÄ Scarb.toml
+‚îî‚îÄ‚îÄ src
+    ‚îî‚îÄ‚îÄ lib.cairo
 
 By default, Scarb configures our project for vanilla Cairo instead of Starknet smart contracts.
 ///
@@ -955,7 +955,7 @@ mod Multisign {
 }
 ///
 "
-What function does multisig contract have?,"Let's take a closer look at the various functions associated with multisig functionality in the provided contract.
+"What function does multisig contract have?","Let's take a closer look at the various functions associated with multisig functionality in the provided contract.
 
 1. add_signers Function
 
@@ -1109,7 +1109,7 @@ The execute_multi_call function serves as the final step in the transaction proc
  }
 }
 ///"
-What about protecting Protocol-Only functions in multisig contract?,"There maybe other use cases for other smart contracts to directly interact with the functions execute and validate of my account contract, I would rather restrict them to be callable only by the Starknet protocol in case there's an attack vector that I'm failing to foresee.
+"What about protecting Protocol-Only functions in multisig contract?","There maybe other use cases for other smart contracts to directly interact with the functions execute and validate of my account contract, I would rather restrict them to be callable only by the Starknet protocol in case there's an attack vector that I'm failing to foresee.
 
 When the Starknet protocol calls a function it uses the zero address as the caller. We can use this fact to create a private function named only_protocol. To create private functions we simply create a new implementation that is not annotated with the external attribute so no public selectors are created.
 ///
@@ -1178,7 +1178,7 @@ fn assert_only_protocol() {
 }
 ///
 Notice that the function is_valid_signature is not protected by the only_protocol function because we do want to allow anyone to use it."
-What about signature validation?,"To validate the signature of a transaction we will need to use the public key associated with the signer of the account contract. We have already defined public_key to be part of the storage of our account but we need to capture its value during deployment using the constructor.
+"What about signature validation?","To validate the signature of a transaction we will need to use the public key associated with the signer of the account contract. We have already defined public_key to be part of the storage of our account but we need to capture its value during deployment using the constructor.
 ///
 #[storage]
 #[starknet::contract]
@@ -1263,12 +1263,12 @@ fn is_valid_signer_signature(
 Private function can be used to validate a transaction signature as required by the validate function. In contrast to the function is_valid_signature we will use an assert to stop the transaction execution in case the signature is found to be invalid. Here's a little casting problem. The function is_valid_signature_bool expects the signature to be passed as an Array but the signature variable inside the validate function is a Span. Because it is easier (and cheaper) to derive a Span from an Array than the opposite, I'll change the function signature of is_valid_signature_bool to expect a Span instead of an Array.
 
 This little change will require deriving a Span from the signature variable inside the function is_valid_signature before calling is_valid_signature_bool which we can easily do with the span() method available on the ArrayTrait."
-Why need auto payment?,"As blockchain adoption increases, there will be a greater need for products with a superior user experience and core functionality that support real use cases. In a few simple steps, we can set up automatic recurring payments today directly on our mobile banking applications. In fact, online bill pay is growing rapidly, and customers especially younger ones have come to expect the ability to set up recurring payments and take advantage of other conveniences associated with using auto-payments. About 3 in 10 surveyed users have changed the way they pay their bills in the past two years and finding a more convenient way to pay was the most frequently cited reason. However, this is not a trivial task on a blockchain like Ethereum, the largest blockchain network by on-chain payment volumes. For certain types of digital wallets, such as a self-custodial wallet where the user has sole control over the wallet and private keys, automated programmable payments that can pull payments automatically from a user's account at recurring intervals requires engineering work.
+"Why need auto payment?","As blockchain adoption increases, there will be a greater need for products with a superior user experience and core functionality that support real use cases. In a few simple steps, we can set up automatic recurring payments today directly on our mobile banking applications. In fact, online bill pay is growing rapidly, and customers especially younger ones have come to expect the ability to set up recurring payments and take advantage of other conveniences associated with using auto-payments. About 3 in 10 surveyed users have changed the way they pay their bills in the past two years and finding a more convenient way to pay was the most frequently cited reason. However, this is not a trivial task on a blockchain like Ethereum, the largest blockchain network by on-chain payment volumes. For certain types of digital wallets, such as a self-custodial wallet where the user has sole control over the wallet and private keys, automated programmable payments that can pull payments automatically from a user's account at recurring intervals requires engineering work.
 
 The concept and one of the leading Ethereum developer proposals known as Account Abstraction to explore how smart contracts can be implemented to enable automated programmable payments. We propose a new solution towards a real-world application of auto payments to demonstrate how to write a smart contract for a self-custodial wallet that can pull funds automatically, instead of requiring the user's active participation each time to instruct and push payments on a blockchain.
 
 Consider a hypothetical scenario: today is the 25th of February. Alex is going away on vacation to the Alps, and she will be returning on March 10th. She must pay her mortgage, TV subscription and utility bills by the 5th of every month. She does not have enough money to pay before she goes on vacation, but she will have enough money when she gets her paycheck on the 1st of March. How is Alex going to enjoy her vacation without missing her payments?"
-What about auto payment on Ethereum?,"Ethereum has two types of accounts: Externally Owned Accounts (EOA) and Contract Accounts. EOAs have a private and public key pairing which helps them initiate transactions. On the other hand, Contract Accounts are smart contracts that rely on predefined codes to trigger particular transactions. In that view, accounts abstraction refers to the process of unifying both contracts under a single merged type that makes it easier for users to interact with blockchain-based applications. This mechanism would enable user accounts to behave like smart contracts, unlocking many new use cases. For instance, users could set up delegate accounts that process automatic periodic payments on users' behalf. Account abstraction can also unlock a broader range of innovative features that simplify the Web 3 experience for average users, including gasless transactions or changing the account signer at every particular interval to increase security.
+"What about auto payment on Ethereum?","Ethereum has two types of accounts: Externally Owned Accounts (EOA) and Contract Accounts. EOAs have a private and public key pairing which helps them initiate transactions. On the other hand, Contract Accounts are smart contracts that rely on predefined codes to trigger particular transactions. In that view, accounts abstraction refers to the process of unifying both contracts under a single merged type that makes it easier for users to interact with blockchain-based applications. This mechanism would enable user accounts to behave like smart contracts, unlocking many new use cases. For instance, users could set up delegate accounts that process automatic periodic payments on users' behalf. Account abstraction can also unlock a broader range of innovative features that simplify the Web 3 experience for average users, including gasless transactions or changing the account signer at every particular interval to increase security.
 
 Let us revisit Alex's situation. Suppose Alex owns a user account which is where her paychecks are deposited and from where she would like to pay her mortgage, TV subscription and utility bills. Today, to pay her bills, Alex has to initiate a transaction that transfers tokens from her EOA to a user account belonging to the recipient, that is, to whomever she is paying her bills. In more detail, Alex's EOA has an associated secret or private key known only to Alex. This private key is used by Alex in the generation of an Elliptic Curve Digital Signature Algorithm (ECDSA) signature that is crucial for the creation of a valid transaction. And this already brings us to the problem at hand. If Alex is away on holiday, who will generate this signature to create the transaction that will make her payment?
 
@@ -1276,8 +1276,8 @@ One solution is for Alex to use what is known as a custodial wallet. With a cust
 
 With a self-custodial wallet, one where the user has total control over her wallet, Alex has sole control of her private key. While there is no need to trust a third party when using a self-custodial wallet, this also means that Alex will not be able to set up an auto payment as she must be the one using her key to generate the signature needed for the payment transaction.
 
-Another way to understand this is through the terminology of pull and push payments. A pull payment is a payment transaction that is triggered by the payee, while a push payment on the other hand is a payment transaction that is triggered by the payer. Ethereum supports push payments but doesn't natively support pull payments ®C auto payments are an example of pull payments."
-What about auto payment on Starknet?,"Account abstraction (AA) is a proposal that attempts to combine user accounts and smart contracts into just one Ethereum account type by making user accounts function like smart contracts. As we will see ahead, AA allows us to design a neat solution for auto payments. But more generally, the motivating rationale behind AA is quite simple but fundamental: Ethereum transactions today have several rigid requirements hardcoded into the Ethereum protocol. For instance, transactions on the Ethereum blockchain today are valid only if they have a valid ECDSA signature, a valid nonce and sufficient account balance to cover the cost of computation.
+Another way to understand this is through the terminology of pull and push payments. A pull payment is a payment transaction that is triggered by the payee, while a push payment on the other hand is a payment transaction that is triggered by the payer. Ethereum supports push payments but doesn't natively support pull payments ‚Äì auto payments are an example of pull payments."
+"What about auto payment on Starknet?","Account abstraction (AA) is a proposal that attempts to combine user accounts and smart contracts into just one Ethereum account type by making user accounts function like smart contracts. As we will see ahead, AA allows us to design a neat solution for auto payments. But more generally, the motivating rationale behind AA is quite simple but fundamental: Ethereum transactions today have several rigid requirements hardcoded into the Ethereum protocol. For instance, transactions on the Ethereum blockchain today are valid only if they have a valid ECDSA signature, a valid nonce and sufficient account balance to cover the cost of computation.
 
 AA proposes having more flexibility in the process for validating a transaction on the blockchain:
 
@@ -1289,9 +1289,9 @@ Essentially, AA allows for programmable validity to verify and validate any bloc
 
 And, most importantly for us in the use case described, AA enables auto payments as we can set up validity rules that no longer include signature verification. We will elaborate on this next.
 
-Our solution for auto payments is to leverage AA and create a new type of account contract ®C a delegable account. Our main idea is to extend programmable validity rules for transactions to include a pre-approved allow list. In essence, AA allows us to delegate the ability to instruct the user's account to initiate a push payment to a pre-approved auto payment smart contract.
+Our solution for auto payments is to leverage AA and create a new type of account contract ‚Äì a delegable account. Our main idea is to extend programmable validity rules for transactions to include a pre-approved allow list. In essence, AA allows us to delegate the ability to instruct the user's account to initiate a push payment to a pre-approved auto payment smart contract.
 
-First, a merchant deploys an auto payment smart contract. When a user with a delegable account visits the merchant's website, they will see a request to approve auto payments ®C similar to Visa acceptance for billers today. Here, the user can see the actions that the auto payment contract will do in the user's name. For example, it can only charge the user once per month, or it cannot charge more than a maximum amount. Crucially, because this is a smart contract, a user can be confident that the auto payment contract cannot execute in a way other than how it is written.
+First, a merchant deploys an auto payment smart contract. When a user with a delegable account visits the merchant's website, they will see a request to approve auto payments ‚Äì similar to Visa acceptance for billers today. Here, the user can see the actions that the auto payment contract will do in the user's name. For example, it can only charge the user once per month, or it cannot charge more than a maximum amount. Crucially, because this is a smart contract, a user can be confident that the auto payment contract cannot execute in a way other than how it is written.
 
 If the user agrees to approve auto payments, the wallet will add the auto payment contract's address to the list of allowed contracts on the user's delegable account.
 
@@ -1368,7 +1368,7 @@ When a user sends an invoke transaction, the first thing that the protocol does 
 
 Notice that if the signature verification is successful, the validate method should return the short string VALID as opposed to a boolean. In Cairo, a short string is simply the ASCII representation of a single felt and not a real string. This is why the return type of the method is felt252. If the signature verification fails, you can stop execution with an assert or return literally any other felt that is not the aforementioned short string.
 
-If the protocol is able to authenticate the signer, it will then call the function execute passing as an argument an array of all the operations or °∞calls°± the user wants to perform as a multicall. Each one of these calls define a target smart contract, a method to call (the °∞selector°±) and the arguments expected by the method.
+If the protocol is able to authenticate the signer, it will then call the function execute passing as an argument an array of all the operations or ‚Äúcalls‚Äù the user wants to perform as a multicall. Each one of these calls define a target smart contract, a method to call (the ‚Äúselector‚Äù) and the arguments expected by the method.
 
 The execution of each Call might result in a value being returned from the target smart contract. This value could be a simple scalar like a felt252 or a boolean, or a complex data structure like a struct or an array. In any case, the Starknet protocol serializes the response using a Span of felt252 elements. Remember that Span represents a snapshot of an Array [4]. This is why the return type of the execute method is an Array of Spans which represents a serialized response from each call in the multicall.
 
@@ -1378,7 +1378,7 @@ To allow other smart contracts to know if your account contract adheres to the S
 
 Although the interface defined by the SNIP-6 is enough to guarantee that a smart contract is in fact an account contract, it is the minimum requirement and not the whole story. For an account to be able to declare other smart contracts and pay for the associated gas fees it will need to also implement the method validate_declare. If we also want to be able to deploy our account contract using the counterfactual deployment method then it also needs to implement the validate_deploy method.
 
-Counterfactual deployment is a mechanism to deploy an account contract without relying on another account contract to pay for the related gas fees. This is important if we don't want to associate a new account contract with its deployer address and instead have a °∞pristine°± beginning.
+Counterfactual deployment is a mechanism to deploy an account contract without relying on another account contract to pay for the related gas fees. This is important if we don't want to associate a new account contract with its deployer address and instead have a ‚Äúpristine‚Äù beginning.
 
 This deployment process starts by calculating locally the would-be-address of our account contract without actually deploying it yet. This is possible to do with tools like Starkli [7]. Once we know the address, we then send enough ETH to that address to cover the costs of deploying our account contract. Once the address is funded we can finally send a deploy_account transaction to Starknet with the compiled code of our account contract. The Sequencer will deploy the account contract to the precalculated address and pay itself gas fees with the ETH we sent there. There's no need to declare an account contract before deploying it.
 
