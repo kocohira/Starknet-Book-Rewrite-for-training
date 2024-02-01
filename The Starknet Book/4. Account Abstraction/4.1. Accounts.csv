@@ -1,5 +1,5 @@
 question,answer
-What is account contract interface?,"Account contracts, being a type of smart contracts, are distinguished by specific methods. A smart contract becomes an account contract when it follows the public interface outlined in SNIP-6 (Starknet Improvement Proposal-6: Standard Account Interface). This standard draws inspiration from SRC-6 and SRC-5, similar to Ethereum's ERCs, which establish application conventions and contract standards.
+"What is account contract interface?","Account contracts, being a type of smart contracts, are distinguished by specific methods. A smart contract becomes an account contract when it follows the public interface outlined in SNIP-6 (Starknet Improvement Proposal-6: Standard Account Interface). This standard draws inspiration from SRC-6 and SRC-5, similar to Ethereum's ERCs, which establish application conventions and contract standards.
 ///
 /// @title Represents a call to a target contract
 /// @param to The target contract address
@@ -54,7 +54,7 @@ Moreover, the 'SNIP-5' (Standard Interface Detection) trait needs to be defined 
 ///
 In essence, when a user dispatches an 'invoke' transaction, the protocol initiates by invoking the '__validate__' method. This verifies the associated signer's authenticity. For security reasons, particularly to safeguard the Sequencer from Denial of Service (DoS) attacks [1], there are constraints on the operations within the '__validate__' method. If the signature is verified, the method yields a 'VALID' 'felt252' value. If not, it returns 0.
 
-After the protocol verifies the signer, it proceeds to invoke the '__execute__' function, passing an array of all desired operations¡ªreferred to as 'calls'¡ªas an argument. Each of these calls specifies a target smart contract address ('to'), the method to be executed ('selector'), and the arguments this method requires ('calldata').
+After the protocol verifies the signer, it proceeds to invoke the '__execute__' function, passing an array of all desired operationsÂ¡Âªreferred to as 'calls'Â¡Âªas an argument. Each of these calls specifies a target smart contract address ('to'), the method to be executed ('selector'), and the arguments this method requires ('calldata').
 ///
 struct Call {
     to: ContractAddress,
@@ -112,7 +112,7 @@ trait ISRC5 {
     fn supports_interface(interface_id: felt252) -> bool;
 }
 ///"
-How about the expand Interface?,"While the components mentioned earlier lay the foundation for an account contract in alignment with the SNIP-6 standard, developers can introduce more features to enhance the contract's capabilities.
+"How about the expand Interface?","While the components mentioned earlier lay the foundation for an account contract in alignment with the SNIP-6 standard, developers can introduce more features to enhance the contract's capabilities.
 
 For example, integrate the '__validate_declare__' function if the contract declares other contracts and handles the corresponding gas fees. This offers a way to authenticate the contract declaration. For those keen on counterfactual smart contract deployment, the '__validate_deploy__' function can be included.
 
